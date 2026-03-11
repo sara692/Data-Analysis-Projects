@@ -48,8 +48,7 @@ This repository brings together all my data analysis work in one place.
 ## 👩‍💻 Author
 
 **Sara Ibrahim Omran**
-- GitHub: [@Sara65](https://github.com/Sara65)
-- HuggingFace: [@Sara65](https://huggingface.co/Sara65)
+- Mail: (saraomran433@gmail.com)
 
 ---
 
