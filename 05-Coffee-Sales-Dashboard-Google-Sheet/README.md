@@ -1,4 +1,4 @@
-#Coffee Sales Analysis – Vending Machine
+# Coffee Sales Analysis – Vending Machine
 📌 Project Overview
 This project analyzes coffee sales data from a vending machine to uncover revenue patterns, customer purchasing habits, and sales trends over time.
 The dataset was visualized using Google Sheets with interactive filters for:
