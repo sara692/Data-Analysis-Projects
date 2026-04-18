@@ -1,4 +1,4 @@
-# 📄 README: MD Water Services Data Dashboard
+# MD Water Services Data Dashboard
 This Power BI dashboard provides an in-depth analysis of water services projects, tracking the status of water sources, improvement needs, costs, and project implementation across provinces. It is designed in two pages for seamless exploration.
 
 🟦 Page 1 & 2 & 3 Combined Insights
