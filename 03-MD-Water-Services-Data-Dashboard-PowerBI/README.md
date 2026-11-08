@@ -1,88 +1,106 @@
-# MD Water Services Data Dashboard
-This Power BI dashboard provides an in-depth analysis of water services projects, tracking the status of water sources, improvement needs, costs, and project implementation across provinces. It is designed in two pages for seamless exploration.
+# 💧 MD Water Services Data Dashboard
 
-🟦 Page 1 & 2 & 3 Combined Insights
-🔷 KPIs (Across Both Pages)
-Total water sources – Number of surveyed water sources.
+A Power BI dashboard that provides an in-depth analysis of water services projects, tracking the status of water sources, improvement needs, costs, and project implementation across provinces. It is designed in two pages for seamless exploration.
 
-Number of sources needing repair – Highlights infrastructure gaps.
+---
 
-Number of improved sources – Shows progress in water source upgrades.
+## 🟦 Combined Insights (Pages 1 & 2)
 
-Total project cost – Sum of expenditures on all water-related projects.
+### 🔷 KPIs (Across Both Pages)
 
-Total project count – Number of distinct projects executed.
+| KPI | Description |
+|-----|-------------|
+| **Total water sources** | Number of surveyed water sources |
+| **Sources needing repair** | Highlights infrastructure gaps |
+| **Improved sources** | Shows progress in water source upgrades |
+| **Total project cost** | Sum of expenditures on all water-related projects |
+| **Total project count** | Number of distinct projects executed |
+| **Towns served** | Reach of interventions |
 
-Number of towns served – Reach of interventions.
+---
 
-🔷 Key Visuals
-✅ Distribution of Water Source Status by Type (Page 1)
+### 🔷 Key Visuals
 
-Chart type: Stacked bar chart
+#### ✅ Distribution of Water Source Status by Type (Page 1)
 
-Y-axis: Water source type
+- **Chart type:** Stacked bar chart
+- **Y-axis:** Water source type
+- **X-axis:** Number of sources
+- **Legend:** Source status (e.g., needs repair, functioning)
+- **Purpose:** Identify which types of water sources require the most attention.
 
-X-axis: Number of sources
+#### ✅ Map of Water Sources (Page 1)
 
-Legend: Source status (e.g., needs repair, functioning)
+- **Displays:** Locations of sources with status indications.
+- **Purpose:** Visualize the geographical spread of water issues or improvements.
 
-Purpose: Identify which types of water sources require the most attention.
+#### ✅ Distribution of Water Source Types Across Provinces (Page 2)
 
-✅ Map of Water Sources (Page 1)
+- **Chart type:** Horizontal stacked bar chart
+- **Y-axis:** Province names
+- **X-axis:** Sum of costs
+- **Legend:** Improvement types (e.g., drill well, install taps)
+- **Purpose:** See how funding is allocated across provinces and intervention types.
 
-Displays: Locations of sources with status indications.
+#### ✅ Project Implementation Trends by Year and Province (Page 2)
 
-Purpose: Visualize the geographical spread of water issues or improvements.
+- **Chart type:** Line chart
+- **X-axis:** Year
+- **Y-axis:** Count of projects
+- **Legend:** Province
+- **Purpose:** Track project activity over time across different provinces.
 
-✅ Distribution of Water Source Types Across Provinces (Page 2)
+---
 
-Chart type: Horizontal stacked bar chart
+## 🔎 Filters Available (Across Both Pages)
 
-Y-axis: Province names
+- Water source type (e.g., borehole, river, shared tap)
+- Repair status
+- Improvement type (e.g., install taps, drill wells)
+- Town name
+- Province name
 
-X-axis: Sum of costs
+---
 
-Legend: Improvement types (e.g., drill well, install taps)
+## 💡 How to Use This Dashboard
 
-Purpose: See how funding is allocated across provinces and intervention types.
+1. Use filters to narrow analysis to specific water source types, improvement actions, towns, or provinces.
+2. On **Page 1**, focus on understanding which water sources are in need of repair and where they are located.
+3. On **Page 2**, analyze how financial resources are distributed, what improvements are being implemented, and track yearly project trends across provinces.
+4. Click on elements in visuals (bars, legends, lines) to cross-filter other charts on the same page for interactive exploration.
+5. Compare the project cost distribution with project count trends to identify regions that may need more investment or have successful implementation rates.
 
-✅ Project Implementation Trends by Year and Province (Page 2)
+---
 
-Chart type: Line chart
+## 📝 Notes
 
-X-axis: Year
+- Each page provides unique insights, but together they give a complete picture of both water source conditions and project performance.
+- Filters on each page operate independently.
+- Ensure data is refreshed regularly to reflect the latest field updates.
 
-Y-axis: Count of projects
+---
 
-Legend: Province
+## 📄 License
 
-Purpose: Track project activity over time across different provinces.
+This project is released under the MIT License — feel free to use it for
+learning or as a portfolio reference.
 
-🔎 Filters Available (Across Both Pages)
-Water source type (e.g., borehole, river, shared tap)
+---
 
-Repair status
+## 👨‍💻 Author
 
-Improvement type (e.g., install taps, drill wells)
+**Sara Ibrahim**  
+*Data Scientist | Machine Learning / AI Engineer*
 
-Town name
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue?style=flat&logo=linkedin)](https://www.linkedin.com/in/sara-ibrahim-omran)  
+[![Email](https://img.shields.io/badge/Email-Contact%20Me-red?style=flat&logo=gmail)](mailto:Saraomran433@gmail.com)
 
-Province name
+### 🌟 Let's Connect!
 
-💡 How to Use This Dashboard
-Use filters to narrow analysis to specific water source types, improvement actions, towns, or provinces.
+I'm passionate about solving real-world problems with data, machine learning, and AI. Feel free to reach out for:
 
-On Page 1, focus on understanding which water sources are in need of repair and where they are located.
+- 💼 Job opportunities and collaborations
+- 📚 Technical discussions and knowledge sharing
+- 🚀 Project ideas and innovative solutions
 
-On Page 2, analyze how financial resources are distributed, what improvements are being implemented, and track yearly project trends across provinces.
-
-Click on elements in visuals (bars, legends, lines) to cross-filter other charts on the same page for interactive exploration.
-
-Compare the project cost distribution with project count trends to identify regions that may need more investment or have successful implementation rates.
-
-📝 Notes
-Each page provides unique insights, but together they give a complete picture of both water source conditions and project performance.
-
-Filters on each page operate independently.
-
-Ensure data is refreshed regularly to reflect the latest field updates.
+**⭐ If you find this project helpful, please give the repo a star!**
