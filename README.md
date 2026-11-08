@@ -45,13 +45,22 @@ This repository brings together all my data analysis work in one place.
 
 ---
 
-## 👩‍💻 Author
+## 📄 License
+This portfolio is available for educational and demonstration purposes. Individual projects may have specific licenses based on data sources and requirements. Please check individual project directories for specific licensing information.
 
-**Sara Ibrahim Omran**
-- Mail: (saraomran433@gmail.com)
+## 👨‍💻 Author
+**Sara Ibrahim**  
+*Data Scientist | Machine Learning Engineer*
+
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue?style=flat&logo=linkedin)](https://www.linkedin.com/in/sara-ibrahim-omran)  
+[![Email](https://img.shields.io/badge/Email-Contact%20Me-red?style=flat&logo=gmail)](mailto:Saraomran433@gmail.com)
 
 ---
 
-## 📄 License
+### 🌟 **Let's Connect!**
+I'm passionate about solving real-world problems with data and machine learning. Feel free to reach out for:
+- 💼 Job opportunities and collaborations
+- 📚 Technical discussions and knowledge sharing
+- 🚀 Project ideas and innovative solutions
 
-This repository is open source and available under the [MIT License](LICENSE).
+**⭐ If you find any project interesting or helpful, please give it a star!**
