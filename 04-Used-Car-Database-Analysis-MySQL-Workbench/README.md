@@ -1,29 +1,36 @@
-# Used-Car-Database-Analysis-MySQL-workbench-Project
+# 🚗 Used Car Database Analysis – MySQL Workbench Project
 
-## Project Overview
+A beginner-friendly SQL project covering data cleaning, transformation, and exploratory analysis of a used car dataset using MySQL.
 
-**Project Title**: Used Car Analysis  
-**Level**: Beginner  
-**Database**: `used_car_db`
+---
 
-This project focuses on data cleaning, transformation, and exploratory analysis of a used car dataset using MySQL.
-It includes database creation, handling missing data, categorizing mileage, and generating various insights such as price trends, popular models, and seller analysis.
-This project is ideal for those who are starting their journey in data analysis and want to build a solid foundation in SQL.
+## 📌 Project Overview
 
-## Objectives
+| Property | Details |
+|----------|---------|
+| **Project Title** | Used Car Analysis |
+| **Level** | Beginner |
+| **Database** | `used_car_db` |
 
-1. **Set up a used car database**: Create and populate a used car database with the provided sales data.
-2. **Data Cleaning**: Identify and remove any records with missing or null values.
-3. **Exploratory Data Analysis (EDA)**: Perform basic exploratory data analysis to understand the dataset.
-4. **Business Analysis**: Use SQL to answer specific business questions and derive insights from the sales data.
+This project focuses on data cleaning, transformation, and exploratory analysis of a used car dataset using MySQL. It includes database creation, handling missing data, categorizing mileage, and generating various insights such as price trends, popular models, and seller analysis. It is ideal for those who are starting their journey in data analysis and want to build a solid foundation in SQL.
 
-## Project Structure
+---
+
+## 🎯 Objectives
+
+1. **Set up a used car database:** Create and populate a used car database with the provided sales data.
+2. **Data Cleaning:** Identify and handle records with missing or null values.
+3. **Exploratory Data Analysis (EDA):** Perform basic exploratory analysis to understand the dataset.
+4. **Business Analysis:** Use SQL to answer specific business questions and derive insights from the sales data.
+
+---
+
+## 🗂️ Project Structure
 
 ### 1. Database Setup
 
-- **Database Creation**: The project starts by creating a database named `used_car_db`.
-- **Table Creation**: A table named `used_cars` is created to store the used car data. The table structure includes columns for listing_id,	vin, make,	model, year, trim, body_type, fuel_type, transmission, mileage, price, condition, subregion, region, country , seller_type
-
+- **Database Creation:** The project starts by creating a database named `used_car_db`.
+- **Table Creation:** A table named `used_cars` stores the used car data. Columns: `listing_id`, `vin`, `make`, `model`, `year`, `trim`, `body_type`, `fuel_type`, `transmission`, `mileage`, `price`, `condition`, `subregion`, `region`, `country`, `seller_type`.
 
 ```sql
 CREATE TABLE used_cars (
@@ -42,13 +49,13 @@ CREATE TABLE used_cars (
     subregion VARCHAR(50),
     region VARCHAR(50),
     country VARCHAR(50),
-    seller_type VARCHAR(3
+    seller_type VARCHAR(30)
 );
 ```
 
 ### 2. Data Exploration & Cleaning
 
-- **Null Value Check**: Check for any null values in the dataset and delete records with missing data.
+**Null value check:** count missing values in every column.
 
 ```sql
 SELECT
@@ -69,7 +76,11 @@ SELECT
     SUM(country IS NULL OR TRIM(country) = '') AS country_missing,
     SUM(seller_type IS NULL OR TRIM(seller_type) = '') AS seller_type_missing
 FROM used_cars;
+```
 
+**Inspect rows with missing data:**
+
+```sql
 SELECT *
 FROM used_cars
 WHERE listing_id IS NULL
@@ -88,44 +99,52 @@ WHERE listing_id IS NULL
    OR region IS NULL OR TRIM(region) = ''
    OR country IS NULL OR TRIM(country) = ''
    OR seller_type IS NULL OR TRIM(seller_type) = '';
+```
 
+**Handle missing conditions:**
+
+```sql
 SET SQL_SAFE_UPDATES = 0;
+
 UPDATE used_cars
 SET `condition` = 'Not specified'
 WHERE `condition` IS NULL OR TRIM(`condition`) = '';
+
 SET SQL_SAFE_UPDATES = 1;
 ```
 
 ### 3. Data Analysis & Findings
 
-The following SQL queries were developed to answer specific business questions:
+The following SQL queries answer specific business questions.
 
-1. **Average Price by Year, Transmission, Fuel Type, and Country.**:
+#### 🔹 Average Price by Year, Transmission, Fuel Type, and Country
+
 ```sql
-SELECT year, transmission, fuel_type, country,'condition',
+SELECT year, transmission, fuel_type, country, `condition`,
        AVG(price) AS avg_price
 FROM used_cars
-GROUP BY year, transmission, fuel_type, country,'condition'
-order by year ;
+GROUP BY year, transmission, fuel_type, country, `condition`
+ORDER BY year;
 ```
 
-2. **Mileage Category Analysis.**:
+#### 🔹 Mileage Category Analysis
+
 ```sql
-REATE VIEW mileage_category_stats AS
+CREATE VIEW mileage_category_stats AS
 WITH mileage_case AS (
-    SELECT 
+    SELECT
         listing_id,
         year,
         mileage,
         price,
-        CASE 
+        CASE
             WHEN mileage < 50000 THEN 'Low'
             WHEN mileage BETWEEN 50000 AND 150000 THEN 'Medium'
             ELSE 'High'
         END AS mileage_category
     FROM used_cars
 )
-SELECT 
+SELECT
     mileage_category,
     year,
     COUNT(*) AS total_cars,
@@ -133,19 +152,22 @@ SELECT
 FROM mileage_case
 GROUP BY mileage_category, year
 ORDER BY mileage_category;
-SELECT * 
+
+SELECT *
 FROM mileage_category_stats;
 ```
 
-3. **Most Common Car Models by Country.**:
+#### 🔹 Most Common Car Models by Country
+
 ```sql
 SELECT country, model, COUNT(*) AS total_listings
 FROM used_cars
 GROUP BY country, model
-ORDER BY total_listings DESC,country;
+ORDER BY total_listings DESC, country;
 ```
 
-4. **Price Range Distribution by Body Type.**:
+#### 🔹 Price Range Distribution by Body Type
+
 ```sql
 SELECT body_type,
        MIN(price) AS min_price,
@@ -153,10 +175,11 @@ SELECT body_type,
        AVG(price) AS avg_price
 FROM used_cars
 GROUP BY body_type
-order by avg_price;
+ORDER BY avg_price;
 ```
 
-5. **Price Trend Over Years.**:
+#### 🔹 Price Trend Over Years
+
 ```sql
 SELECT year, AVG(price) AS avg_price, COUNT(*) AS total_cars
 FROM used_cars
@@ -164,7 +187,8 @@ GROUP BY year
 ORDER BY year;
 ```
 
-6. **Top 10 Most Expensive Cars.**:
+#### 🔹 Top 10 Most Expensive Cars
+
 ```sql
 SELECT make, model, year, price, mileage, country
 FROM used_cars
@@ -172,7 +196,8 @@ ORDER BY price DESC
 LIMIT 10;
 ```
 
-7. **Seller Type Analysis**:
+#### 🔹 Seller Type Analysis
+
 ```sql
 SELECT seller_type, COUNT(*) AS total_cars, AVG(price) AS avg_price
 FROM used_cars
@@ -180,7 +205,8 @@ GROUP BY seller_type
 ORDER BY total_cars DESC;
 ```
 
-8. **Transmission Preference by Country.**:
+#### 🔹 Transmission Preference by Country
+
 ```sql
 SELECT country, transmission, COUNT(*) AS total_cars
 FROM used_cars
@@ -188,7 +214,8 @@ GROUP BY country, transmission
 ORDER BY country, total_cars DESC;
 ```
 
-9. **Fuel Type Popularity by Region.**:
+#### 🔹 Fuel Type Popularity by Region
+
 ```sql
 SELECT region, fuel_type, COUNT(*) AS total_cars, AVG(price) AS avg_price
 FROM used_cars
@@ -196,33 +223,67 @@ GROUP BY region, fuel_type
 ORDER BY region, total_cars DESC;
 ```
 
-## Key Insights You Can Extract
+---
 
-- **Average car prices by year, transmission type, fuel type, and country.**
-- **Categorized mileage analysis for easy interpretation.**
-- **Most common models by country.**
-- **Price ranges per body type.**
-- **Price trends over the years.**
-- **Top high-value listings.**
-- **Seller type performance.**
-- **Transmission and fuel preferences by region.**
+## 📈 Key Insights You Can Extract
 
+- ✅ Average car prices by year, transmission type, fuel type, and country
+- ✅ Categorized mileage analysis for easy interpretation
+- ✅ Most common models by country
+- ✅ Price ranges per body type
+- ✅ Price trends over the years
+- ✅ Top high-value listings
+- ✅ Seller type performance
+- ✅ Transmission and fuel preferences by region
 
-## Tools & Technologies
+---
 
-- **Database**: MySQL.
-- **Techniques**: Data cleaning, handling missing values, grouping & aggregation, Common Table Expressions (CTE), Views.
+## 🛠️ Tools & Technologies
 
-## Conclusion
+| Category | Details |
+|----------|---------|
+| **Database** | MySQL (MySQL Workbench) |
+| **Techniques** | Data cleaning, handling missing values, grouping & aggregation, Common Table Expressions (CTEs), Views |
 
-This project serves as a comprehensive introduction to SQL for data analysts, covering database setup, data cleaning, exploratory data analysis, and business-driven SQL queries. The findings from this project can help drive business decisions by understanding sales patterns, customer behavior, and product performance.
+---
 
-## How to Use
+## 🏁 Conclusion
 
-1. **Clone the Repository**: Clone this project repository from GitHub.
-2. **Run the Queries**: Use the SQL queries provided in the `user_cars_db` file to perform your analysis.
-4. **Explore and Modify**: Feel free to modify the queries to explore different aspects of the dataset or answer additional business questions.
+This project serves as a comprehensive introduction to SQL for data analysts, covering database setup, data cleaning, exploratory data analysis, and business-driven SQL queries. The findings can help drive business decisions by revealing sales patterns, customer behavior, and product performance.
 
-## Author - Sara Ibrahim
+---
 
-This project is part of my portfolio, showcasing the SQL skills essential for data analyst roles. If you have any questions, feedback, or would like to collaborate, feel free to get in touch!
+## 🚀 How to Use
+
+1. **Clone the repository** from GitHub.
+2. **Run the queries** provided in the `user_cars_db` file to perform your analysis.
+3. **Explore and modify** the queries to examine different aspects of the dataset or answer additional business questions.
+
+---
+
+## 📄 License
+
+This project is released under the MIT License — feel free to use it for
+learning or as a portfolio reference.
+
+---
+
+## 👨‍💻 Author
+
+**Sara Ibrahim**  
+*Data Scientist | Machine Learning / AI Engineer*
+
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue?style=flat&logo=linkedin)](https://www.linkedin.com/in/sara-ibrahim-omran)  
+[![Email](https://img.shields.io/badge/Email-Contact%20Me-red?style=flat&logo=gmail)](mailto:Saraomran433@gmail.com)
+
+This project is part of my portfolio, showcasing the SQL skills essential for data analyst roles.
+
+### 🌟 Let's Connect!
+
+I'm passionate about solving real-world problems with data, machine learning, and AI. Feel free to reach out for:
+
+- 💼 Job opportunities and collaborations
+- 📚 Technical discussions and knowledge sharing
+- 🚀 Project ideas and innovative solutions
+
+**⭐ If you find this project helpful, please give the repo a star!**
